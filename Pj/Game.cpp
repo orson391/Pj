@@ -1,11 +1,9 @@
 
-#include "TextureManager.hpp"
+#include "GameObject.hpp"
 
 
 
-
-SDL_Texture* playerTex;
-SDL_Rect srcR, destR;
+GameObject* player;
 
 
 
@@ -47,7 +45,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	//	isRunning = false;
 	//}
 
-	playerTex = TextureManager::LoadTexture("image/pp.png", renderer);
+	player = new GameObject("image/pp.png", renderer,50,50);
 
 }
 
@@ -68,11 +66,8 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	cnt++;
-	destR.h = 32;
-	destR.w = 32;
-	destR.x = cnt;
-	std::cout << cnt << std::endl;
+	player->Update();
+	
 }
 
 void Game::render()
@@ -80,7 +75,7 @@ void Game::render()
 	SDL_RenderClear(renderer);
 	//stff to render
 
-	SDL_RenderCopy(renderer, playerTex, NULL, &destR);
+	player->Render();
 
 	SDL_RenderPresent(renderer);
 
