@@ -1,7 +1,7 @@
 
-#include "Game.hpp"
 #include "TextureManager.hpp"
-#define SDL_MAIN_HANDLED
+
+
 
 
 SDL_Texture* playerTex;
